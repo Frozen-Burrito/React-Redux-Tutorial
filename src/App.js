@@ -4,13 +4,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // Components 
 import Navbar from './components/navbar';
 
+// Pages
 import Home from './components/home';
 import About from './components/about';
 import Contact from './components/contact';
 
 import Post from './components/post';
 
-function App() {
+const App = () => {
     return (
         <BrowserRouter>
             <div className="App">

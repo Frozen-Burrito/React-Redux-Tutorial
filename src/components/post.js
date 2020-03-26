@@ -1,23 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-class Post extends Component {
+import { deletePost } from '../actions/postActions';
 
-    handleClick = () => {
-        this.props.deletePost(this.props.post.id);
-        this.props.history.push('/');
+const Post = (props) => {
+
+    const { post } = props;
+
+    const handleClick = () => {
+        props.deletePost(props.post.id);
+        props.history.push('/');
     }
 
-    render () {
+        console.log(props);
 
-        console.log(this.props);
-
-        const postToShow = this.props.post ? (
+        const displayedPost = post ? (
             <div className="post">
-                <h4 className="center">{this.props.post.title}</h4>
-                <p>{this.props.post.body}</p>
+                <h4 className="center">{post.title}</h4>
+                <p>{post.body}</p>
                 <div className="center">
-                    <button className="btn grey" onClick={this.handleClick}>
+                    <button className="btn grey" onClick={handleClick}>
                         Delete Post
                     </button>
                 </div>
@@ -28,10 +30,9 @@ class Post extends Component {
 
         return (
             <div className="container">
-                {postToShow}
+                {displayedPost}
             </div>
         )
-    }
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -45,7 +46,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deletePost: (id) => {dispatch({type: 'DELETE_POST', id: id})}
+        deletePost: (id) => {dispatch(deletePost(id))}
     }
 }
 
