@@ -4,3 +4,10 @@ export const deletePost = (id) => {
         id
     }
 }
+
+export const addPost = (post) => {
+    return {
+        type: 'ADD_POST',
+        post
+    }
+}
